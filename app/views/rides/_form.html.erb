@@ -1,0 +1,42 @@
+<%= form_for(@ride) do |f| %>
+    <% if @ride.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+
+          <ul>
+            <% @ride.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :bike_id %>
+      <br>
+      <%= f.text_field :bike_id %>
+    </div>
+    <div class="field">
+      <%= f.label :route_id %>
+      <br>
+      <%= f.text_field :route_id %>
+    </div>
+    <div class="field">
+      <%= f.label :ride_date %>
+      <br>
+      <%= f.date_select :ride_date %>
+    </div>
+    <div class="field">
+      <%= f.label :distance %>
+      <br>
+      <%= f.text_field :distance %>
+    </div>
+    <div class="field">
+      <%= f.label :speed %>
+      <br>
+      <%= f.text_field :speed %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
