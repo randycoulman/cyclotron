@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140526215959) do
+ActiveRecord::Schema.define(version: 20140526220248) do
 
   create_table "bikes", force: true do |t|
     t.string "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140526215959) do
     t.decimal "speed", precision: 3, scale: 1
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text "notes"
   end
 
   add_index "rides", ["bike_id"], name: "index_rides_on_bike_id"

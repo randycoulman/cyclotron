@@ -8,6 +8,7 @@
     <th>Ride date</th>
     <th>Distance</th>
     <th>Speed</th>
+    <th>Notes</th>
     <th colspan="3"></th>
   </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= ride.ride_date %></td>
         <td><%= ride.distance %></td>
         <td><%= ride.speed %></td>
+        <td><%= ride.notes %></td>
         <td><%= link_to 'Show', ride %></td>
         <td><%= link_to 'Edit', edit_ride_path(ride) %></td>
         <td><%= link_to 'Destroy', ride, method: :delete, data: {confirm: 'Are you sure?'} %></td>
