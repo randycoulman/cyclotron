@@ -6,7 +6,7 @@ class RideTest < ActiveSupport::TestCase
   def setup
     @bike = Bike.create!(name: "A bike")
     @route = Route.create!(name: "A route")
-    @ride = Ride.new(bike: @bike, route: @route, ride_date: Date.today, distance: 12.345, speed: 16.7)
+    @ride = Ride.new(bike: @bike, route: @route, rode_on: Date.today, distance: 12.345, speed: 16.7)
   end
 
   def test_knows_its_bike
@@ -18,7 +18,7 @@ class RideTest < ActiveSupport::TestCase
   end
 
   def test_has_a_ride_date
-    assert_equal Date.today, ride.ride_date
+    assert_equal Date.today, ride.rode_on
   end
 
   def test_has_a_distance
@@ -44,7 +44,7 @@ class RideTest < ActiveSupport::TestCase
   end
 
   def test_must_have_a_ride_date
-    ride.ride_date = nil
+    ride.rode_on = nil
     refute ride.valid?
   end
 

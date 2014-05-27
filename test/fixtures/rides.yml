@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  bike_id: 
-  route_id: 
-  ride_date: 2014-05-26
+  bike: one
+  route: one
+  rode_on: 2014-05-26
   distance: 9.99
   speed: 9.99
 
 two:
-  bike_id: 
-  route_id: 
-  ride_date: 2014-05-26
+  bike: two
+  route: two
+  rode_on: 2014-05-26
   distance: 9.99
   speed: 9.99
