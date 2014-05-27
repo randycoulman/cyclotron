@@ -20,6 +20,10 @@ group :development do
   gem 'spring', '~> 1.1'
 end
 
+group :test do
+  gem 'selenium-webdriver', '~> 2.42'
+  gem 'minitest-rails-capybara', '~> 2.0'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
