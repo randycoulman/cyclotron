@@ -25,6 +25,10 @@ group :test do
   gem 'minitest-rails-capybara', '~> 2.0'
 end
 
+group :development, :test do
+  gem 'factory_girl_rails', '~> 4.4'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,9 +1,8 @@
+<% provide(:title, @bike.name) %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @bike.name %>
-</p>
+<h1><%= @bike.name %></h1>
 
 <%= link_to 'Edit', edit_bike_path(@bike) %> |
 <%= link_to 'Back', bikes_path %>
