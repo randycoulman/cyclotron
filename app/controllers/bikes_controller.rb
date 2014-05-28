@@ -12,7 +12,6 @@ class BikesController < ApplicationController
   def show
   end
 
-  # GET /bikes/new
   def new
     @bike = Bike.new
   end
@@ -21,14 +20,13 @@ class BikesController < ApplicationController
   def edit
   end
 
-  # POST /bikes
   # POST /bikes.json
   def create
     @bike = Bike.new(bike_params)
 
     respond_to do |format|
       if @bike.save
-        format.html { redirect_to @bike, notice: 'Bike was successfully created.' }
+        format.html { redirect_to bikes_path, notice: 'Bike was successfully created.' }
         format.json { render :show, status: :created, location: @bike }
       else
         format.html { render :new }
@@ -62,12 +60,10 @@ class BikesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_bike
     @bike = Bike.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def bike_params
     params.require(:bike).permit(:name)
   end

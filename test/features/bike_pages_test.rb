@@ -1,16 +1,46 @@
 require "test_helper"
 
 class BikePagesTest < Capybara::Rails::TestCase
-  def test_new_bike_page
+  def setup
     visit new_bike_path
-    assert(page.has_title?("New bike"))
+  end
+
+  def test_new_bike_page
+    assert_title("New bike")
     assert_content("New bike")
+  end
+
+  def test_doesnt_create_invalid_bike
+    assert_no_difference(-> {Bike.count}) do
+      submit
+    end
+    assert_title("New bike")
+    assert_content("error")
+  end
+
+  def test_creates_valid_bike
+    fill_in "Name", with: "A bike"
+    assert_difference(-> {Bike.count}) do
+      submit
+    end
+    assert_title("Bikes")
+    assert_content("A bike")
   end
 
   def test_shows_bike_name
     bike = create(:bike, name: "My bike")
     visit bike_path(bike)
-    assert(page.has_title?("My bike"))
+    assert_title("My bike")
     assert_content("My bike")
+  end
+
+  private
+
+  def assert_title(text)
+    assert(page.has_title?(text))
+  end
+
+  def submit
+    click_button "Create Bike"
   end
 end

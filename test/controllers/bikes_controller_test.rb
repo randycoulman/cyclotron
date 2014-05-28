@@ -11,19 +11,6 @@ class BikesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:bikes)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create bike" do
-    assert_difference('Bike.count') do
-      post :create, bike: {name: @bike.name}
-    end
-
-    assert_redirected_to bike_path(assigns(:bike))
-  end
-
   test "should show bike" do
     get :show, id: @bike
     assert_response :success
