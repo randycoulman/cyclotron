@@ -41,7 +41,6 @@ class BikesController < ApplicationController
     end
   end
 
-  # DELETE /bikes/1
   # DELETE /bikes/1.json
   def destroy
     @bike.destroy
@@ -52,6 +51,7 @@ class BikesController < ApplicationController
   end
 
   private
+
   def set_bike
     @bike = Bike.find(params[:id])
   end

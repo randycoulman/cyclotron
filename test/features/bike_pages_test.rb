@@ -90,3 +90,22 @@ class ListBikesTest < Capybara::Rails::TestCase
     end
   end
 end
+
+class DeleteBikeTest < Capybara::Rails::TestCase
+  attr_reader :bike
+
+  def setup
+    @bike = create(:bike)
+    visit bikes_path
+  end
+
+  def test_has_delete_link
+    assert_link("Destroy")
+  end
+
+  def test_can_delete_a_bike
+    assert_difference(-> { Bike.count }, -1) do
+      click_link("Destroy", match: :first)
+    end
+  end
+end
