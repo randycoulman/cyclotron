@@ -11,7 +11,6 @@ class BikesController < ApplicationController
     @bike = Bike.new
   end
 
-  # GET /bikes/1/edit
   def edit
   end
 
@@ -35,7 +34,7 @@ class BikesController < ApplicationController
   def update
     respond_to do |format|
       if @bike.update(bike_params)
-        format.html { redirect_to @bike, notice: 'Bike was successfully updated.' }
+        format.html { redirect_to bikes_path, notice: 'Bike was successfully updated.' }
         format.json { render :show, status: :ok, location: @bike }
       else
         format.html { render :edit }

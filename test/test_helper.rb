@@ -17,3 +17,9 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class Capybara::Rails::TestCase
+  def assert_title(text)
+    assert(page.has_title?(text))
+  end
+end

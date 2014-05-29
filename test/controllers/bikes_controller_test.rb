@@ -11,14 +11,9 @@ class BikesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:bikes)
   end
 
-  test "should get edit" do
-    get :edit, id: @bike
-    assert_response :success
-  end
-
   test "should update bike" do
     patch :update, id: @bike, bike: {name: @bike.name}
-    assert_redirected_to bike_path(assigns(:bike))
+    assert_redirected_to bikes_path
   end
 
   test "should destroy bike" do
