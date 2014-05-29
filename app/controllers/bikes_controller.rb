@@ -1,7 +1,6 @@
 class BikesController < ApplicationController
   before_action :set_bike, only: [:edit, :update, :destroy]
 
-  # GET /bikes
   # GET /bikes.json
   def index
     @bikes = Bike.all
@@ -29,7 +28,6 @@ class BikesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /bikes/1
   # PATCH/PUT /bikes/1.json
   def update
     respond_to do |format|

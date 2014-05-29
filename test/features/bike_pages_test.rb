@@ -71,3 +71,22 @@ class EditBikeTest < Capybara::Rails::TestCase
     click_button "Update Bike"
   end
 end
+
+class ListBikesTest < Capybara::Rails::TestCase
+  def setup
+    create(:bike, name: "Road Bike")
+    create(:bike, name: "Mountain Bike")
+    visit bikes_path
+  end
+
+  def test_list_bikes_page
+    assert_title("Bikes")
+    assert_content("Bikes")
+  end
+
+  def test_lists_each_bike
+    Bike.all.each do |bike|
+      assert_content(bike.name)
+    end
+  end
+end
