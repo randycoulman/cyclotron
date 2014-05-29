@@ -25,13 +25,7 @@ class BikePagesTest < Capybara::Rails::TestCase
     end
     assert_title("Bikes")
     assert_content("A bike")
-  end
-
-  def test_shows_bike_name
-    bike = create(:bike, name: "My bike")
-    visit bike_path(bike)
-    assert_title("My bike")
-    assert_content("My bike")
+    assert_selector('div.flash.flash-notice', text: 'success')
   end
 
   private

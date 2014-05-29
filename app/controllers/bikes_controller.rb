@@ -1,15 +1,10 @@
 class BikesController < ApplicationController
-  before_action :set_bike, only: [:show, :edit, :update, :destroy]
+  before_action :set_bike, only: [:edit, :update, :destroy]
 
   # GET /bikes
   # GET /bikes.json
   def index
     @bikes = Bike.all
-  end
-
-  # GET /bikes/1
-  # GET /bikes/1.json
-  def show
   end
 
   def new

@@ -11,11 +11,6 @@ class BikesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:bikes)
   end
 
-  test "should show bike" do
-    get :show, id: @bike
-    assert_response :success
-  end
-
   test "should get edit" do
     get :edit, id: @bike
     assert_response :success
