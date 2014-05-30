@@ -44,8 +44,8 @@ class EditBikeTest < Capybara::Rails::TestCase
   end
 
   def test_edit_bike_page
-    assert_content("Update Bike")
     assert_title("Update Bike")
+    assert_content("Update Bike")
   end
 
   def test_doesnt_update_invalid_bike

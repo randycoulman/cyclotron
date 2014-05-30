@@ -35,3 +35,45 @@ class NewRouteTest < Capybara::Rails::TestCase
     click_button "Create Route"
   end
 end
+
+class EditRouteTest < Capybara::Rails::TestCase
+  attr_reader :route
+
+  def setup
+    @route = create(:route)
+    visit edit_route_path(route)
+  end
+
+  def test_edit_route_page
+    assert_title("Update Route")
+    assert_content("Update Route")
+  end
+
+  def test_doesnt_update_invalid_route
+    fill_in "Name", with: " "
+    submit
+    assert_title("Update Route")
+    assert_content("error")
+  end
+
+  def test_updates_valid_route
+    new_name = "New name"
+    new_description = "New description"
+    fill_in "Name", with: new_name
+    fill_in "Description", with: new_description
+    submit
+    assert_title(new_name)
+    assert_content(new_name)
+    assert_content(new_description)
+    assert_selector("div.flash.flash-notice", text: "success")
+    reloaded = route.reload
+    assert_equal(new_name, reloaded.name)
+    assert_equal(new_description, reloaded.description)
+  end
+
+  private
+
+  def submit
+    click_button "Update Route"
+  end
+end
