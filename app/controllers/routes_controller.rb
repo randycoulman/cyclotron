@@ -12,7 +12,6 @@ class RoutesController < ApplicationController
   def show
   end
 
-  # GET /routes/new
   def new
     @route = Route.new
   end
@@ -21,7 +20,6 @@ class RoutesController < ApplicationController
   def edit
   end
 
-  # POST /routes
   # POST /routes.json
   def create
     @route = Route.new(route_params)
