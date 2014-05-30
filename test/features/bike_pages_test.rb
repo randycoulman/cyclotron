@@ -6,15 +6,15 @@ class NewBikeTest < Capybara::Rails::TestCase
   end
 
   def test_new_bike_page
-    assert_title("New bike")
-    assert_content("New bike")
+    assert_title("New Bike")
+    assert_content("New Bike")
   end
 
   def test_doesnt_create_invalid_bike
     assert_no_difference(-> {Bike.count}) do
       submit
     end
-    assert_title("New bike")
+    assert_title("New Bike")
     assert_content("error")
   end
 

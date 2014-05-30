@@ -18,8 +18,17 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
-class Capybara::Rails::TestCase
-  def assert_title(text)
-    assert(page.has_title?(text))
+module Capybara::Assertions
+  def assert_title(*args)
+    node, *args = prepare_args(args)
+    assert(node.has_title?(*args),
+           message { "Expected #{node.title.inspect} to include #{args.first.inspect}" })
   end
+
+  def refute_title(*args)
+    node, *args = prepare_args(args)
+    assert(node.has_no_title?(*args),
+           message { "Expected #{node.title.inspect} not to include #{args.first.inspect}" })
+  end
+  alias_method :assert_no_title, :refute_title
 end

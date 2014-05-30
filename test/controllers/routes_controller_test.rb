@@ -11,19 +11,6 @@ class RoutesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:routes)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create route" do
-    assert_difference('Route.count') do
-      post :create, route: {description: @route.description, name: @route.name}
-    end
-
-    assert_redirected_to route_path(assigns(:route))
-  end
-
   test "should show route" do
     get :show, id: @route
     assert_response :success
