@@ -111,3 +111,22 @@ class ShowRouteTest < Capybara::Rails::TestCase
     assert_content(route.description)
   end
 end
+
+class DeleteRouteTest < Capybara::Rails::TestCase
+  attr_reader :route
+
+  def setup
+    @route = create(:route)
+    visit routes_path
+  end
+
+  def test_has_delete_link
+    assert_link("Destroy")
+  end
+
+  def test_can_delete_a_route
+    assert_difference(-> { Route.count }, -1) do
+      click_link("Destroy", match: :first)
+    end
+  end
+end
