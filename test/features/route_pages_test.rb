@@ -96,3 +96,18 @@ class ListRoutesTest < Capybara::Rails::TestCase
     end
   end
 end
+
+class ShowRouteTest < Capybara::Rails::TestCase
+  attr_reader :route
+
+  def setup
+    @route = create(:route)
+    visit route_path(route)
+  end
+
+  def test_show_route_page
+    assert_title(route.name)
+    assert_content(route.name)
+    assert_content(route.description)
+  end
+end
