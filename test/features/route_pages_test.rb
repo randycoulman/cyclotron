@@ -77,3 +77,22 @@ class EditRouteTest < Capybara::Rails::TestCase
     click_button "Update Route"
   end
 end
+
+class ListRoutesTest < Capybara::Rails::TestCase
+  def setup
+    create(:route, name: "Century")
+    create(:route, name: "Metric")
+    visit routes_path
+  end
+
+  def test_list_routes_page
+    assert_title("Routes")
+    assert_content("Routes")
+  end
+
+  def test_lists_each_route
+    Route.all.each do |route|
+      assert_content(route.name)
+    end
+  end
+end
