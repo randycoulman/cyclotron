@@ -4,7 +4,7 @@ FactoryGirl.define do
   end
 
   factory :route do
-    name "A route"
+    sequence(:name) { |n| "Route #{n}" }
     description "This is a fun route"
   end
 end

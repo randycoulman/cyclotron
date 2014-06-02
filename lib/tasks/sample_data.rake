@@ -5,5 +5,11 @@ namespace :db do
     Bike.create!(name: "Road Bike")
     Bike.create!(name: "Hybrid")
     Bike.create!(name: "Cross")
+
+    100.times do |n|
+      name = Faker::Address.street_name
+      description = Faker::Lorem.sentence
+      Route.create!(name: name, description: description)
+    end
   end
 end

@@ -79,19 +79,17 @@ class EditRouteTest < Capybara::Rails::TestCase
 end
 
 class ListRoutesTest < Capybara::Rails::TestCase
-  def setup
-    create(:route, name: "Century")
-    create(:route, name: "Metric")
-    visit routes_path
-  end
-
   def test_list_routes_page
+    visit routes_path
     assert_title("Routes")
     assert_content("Routes")
   end
 
-  def test_lists_each_route
-    Route.all.each do |route|
+  def test_pagination
+    35.times { create(:route) }
+    visit routes_path
+    assert_selector("div.pagination")
+    Route.paginate(page: 1).each do |route|
       assert_content(route.name)
     end
   end
