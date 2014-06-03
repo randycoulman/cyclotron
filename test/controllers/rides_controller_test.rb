@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class RidesControllerTest < ActionController::TestCase
+  fixtures :all
+
   setup do
     @ride = rides(:one)
   end
