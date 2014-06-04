@@ -33,4 +33,17 @@ class RouteTest < ActiveSupport::TestCase
     route.description = ""
     assert route.valid?
   end
+
+  def test_cant_delete_a_route_thats_been_ridden
+    route.save!
+    create(:ride, route: route)
+    route.destroy
+    assert_nothing_raised(ActiveRecord::RecordNotFound) { route.reload }
+  end
+
+  def test_can_delete_an_unridden_route
+    route.save!
+    route.destroy
+    assert_raises(ActiveRecord::RecordNotFound) { route.reload }
+  end
 end

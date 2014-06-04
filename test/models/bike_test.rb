@@ -24,4 +24,17 @@ class BikeTest < ActiveSupport::TestCase
     bike.name = "a" * 31
     refute bike.valid?
   end
+
+  def test_cant_delete_a_bike_thats_been_ridden
+    bike.save!
+    create(:ride, bike: bike)
+    bike.destroy
+    assert_nothing_raised(ActiveRecord::RecordNotFound) { bike.reload }
+  end
+
+  def test_can_delete_an_unridden_bike
+    bike.save!
+    bike.destroy
+    assert_raises(ActiveRecord::RecordNotFound) { bike.reload }
+  end
 end

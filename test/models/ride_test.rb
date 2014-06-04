@@ -4,7 +4,6 @@ class RideTest < ActiveSupport::TestCase
   attr_reader :ride, :bike, :route
 
   def setup
-    Ride.destroy_all  # TODO: Delete this once fixtures are gone
     @bike = Bike.create!(name: "A bike")
     @route = Route.create!(name: "A route")
     @ride = Ride.new(bike: @bike, route: @route, rode_on: Date.today, distance: 12.345, speed: 16.7)
